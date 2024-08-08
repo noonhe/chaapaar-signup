@@ -1,0 +1,107 @@
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+    /*this is to insure that your layouts on mobile phoness won't inadvertently trigger a change where font sizes are suddenly larger than you're expecting*/
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  
+  *, *::before, *::after{
+    box-sizing: border-box;
+  }
+  
+  
+  body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Set shorter line heights on headings and interactive elements */
+  h1, h2, h3, h4,
+  button, input, label {
+    line-height: 1.1;
+  }
+  
+  /* Balance text wrapping on headings */
+  h1, h2,
+  h3, h4 {
+    text-wrap: balance;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6
+  ,ul , ol, blockquote, figure{
+    overflow-wrap: break-word;
+  }
+  
+  /* Remove default margin in favour of better control in authored CSS */
+  body, h1, h2, h3, h4, p,
+  figure, blockquote, dl, dd {
+    margin-block-end: 0 !important;
+  }
+  
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+  }
+  
+  details > summary {
+    list-style: none;
+  }
+  
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    // color: currentColor;
+  }
+  
+  :where(img , svg:not([class^="mdc"]), video, canvas, audio, iframe, embed, object){
+    display: inline-block;
+  }
+  
+  :where(img, svg:not([class^="mdc"]), video){
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+  
+  :where(a[href], area, button,
+  input:not([type="text"],[type="email"],[type="number"],[type="password"],[type=""],[type="tell"],[type="url"]),
+  label[for], select, summary, [tabindex]:not([tabindex*="-"])){
+    cursor: pointer;
+  }
+  
+  
+  :where(a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*="-"])) {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  :where(input, button.ezp-btn, textarea, select),
+  :where(input[type="file"])::-webkit-file-upload-button {
+    font: inherit;
+    font-size: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+  }
+  
+  /* Make sure textareas without a rows attribute are not tiny */
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+  
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
+  }

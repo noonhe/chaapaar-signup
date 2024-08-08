@@ -1,0 +1,11 @@
+{
+    "/api": {
+        "target": "https://accounts.mail.ir",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "pathRewrite": {
+          "^/api": ""
+        }
+    }
+}

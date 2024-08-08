@@ -1,0 +1,48 @@
+<div [dir]="formLang === 'fa' ? 'rtl' : 'ltr'"  class="sign-up-container">
+
+    <div class="loading-container" *ngIf="!(formConfig$() && signUpForm$())">
+        <div class="loader"></div>
+    </div>
+    <div *ngIf="formConfig$()" class="sign-up-form-container">
+        <h2>
+            {{formConfig$()?.form?.title}}
+        </h2>
+        <form [formGroup]="signUpForm$()" (ngSubmit)="onSubmit()">
+            <div class="form-field" *ngFor="let field of formConfig$()?.form?.fields; let  i = index">
+                <label [for]="field.name">{{ field.title }}
+                    <span *ngIf="field.required">&nbsp;*&nbsp;</span>
+                    <button *ngIf="field.description" class="small-icon-btn" (click)="showDescription(i)">
+                        <img src="info.svg" alt="راهنما">
+                    </button>
+                </label>
+                <div *ngIf="tooltipVisible[i]" class="description-tooltip">
+                    <p>
+                        {{field.description}}
+                    </p>
+                </div>
+                <div class="input-box">
+                    <input [ngClass]="{'invalid': signUpForm$().controls[field.name].invalid && (signUpForm$().get(field.name)?.dirty || signUpForm$().get(field.name)?.touched)}" [id]="field.name" [type]="field.type === 'NEW_PASSWORD' ? 'password' : 'text'" [formControlName]="field.name"
+                        [placeholder]="field.title">
+                    <ng-container *ngIf="field.type === 'NEW_PASSWORD'">
+                        <button class="small-icon-btn" (click)="togglePasswordShow(field.name)">
+                            <img *ngIf="(passwordShow.newPassword && field.name === 'newPassword') || (passwordShow.newPasswordConfirm && field.name === 'newPasswordConfirm')" src="eye.svg" alt="نمایش کلمه عبور">
+                            <img *ngIf="(!passwordShow.newPassword && field.name === 'newPassword') || (!passwordShow.newPasswordConfirm && field.name === 'newPasswordConfirm')" src="eyeoff.svg" alt="مخفی کردن کلمه عبور">
+                        </button>
+                    </ng-container>
+                </div>
+                <div class="error-message-container">
+                    <ng-container *ngIf="signUpForm$().get(field.name)?.invalid && (signUpForm$().get(field.name)?.dirty || signUpForm$().get(field.name)?.touched)">
+                        <p class="error-message" *ngIf="signUpForm$().get(field.name)?.hasError('required')">{{ field.errorMessage }}</p>
+                        <p class="error-message" *ngIf="signUpForm$().get(field.name)?.hasError('minlength')">{{ field.errorMessage }}</p>
+                        <p class="error-message" *ngIf="signUpForm$().get(field.name)?.hasError('maxlength')">{{ field.errorMessage }}</p>
+                        <p class="error-message" *ngIf="signUpForm$().get(field.name)?.hasError('pattern')">{{ field.errorMessage }}</p>
+                    </ng-container>
+                </div>
+            </div>
+            <button [disabled]="signUpForm$().invalid" class="primary-btn" type="submit">{{ formConfig$()?.form?.submitLabel }}</button>
+        </form>
+    </div>
+    <div class="ally-footer-container">
+        <app-a11y-footer></app-a11y-footer>
+    </div>
+</div>

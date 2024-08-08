@@ -1,0 +1,10 @@
+:host{
+    display: flex;
+    height: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color-base);
+    box-shadow: var(--box-shadow-strong);
+    padding: 0 var(--spacing-1);
+    border-top: 1px solid var(--footer-border);
+}

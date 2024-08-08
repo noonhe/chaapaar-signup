@@ -1,0 +1,40 @@
+button{
+    font-family: 'Vazirmatn';
+}
+button.primary-btn{
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-color);
+    min-width: 300px;
+    border: none;
+    border-radius: 0.5rem;
+}
+button.icon-btn{
+    background-color: transparent;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+button.small-icon-btn{
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    img{
+        width: 20px;
+        height: 20px;
+    }
+}
